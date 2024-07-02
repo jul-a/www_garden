@@ -106,16 +106,19 @@ def garden():
 
     username = session['username']
     user = User.query.filter_by(username=username).first()
+    user_flower = Flower.query.filter_by(user_id=user.id).first()
 
     # Ensure the user has chosen a flower
-    if Flower.query.filter_by(user_id=user.id).count() == 0:
+    if not user_flower:
         flash("You need to choose a flower first.", "error")
         return redirect(url_for('home'))
 
     # Get assigned positions
-    assigned_positions = {flower.grid_position: flower.user.username for flower in Flower.query.all() if flower.grid_position is not None}
+    assigned_positions = {flower.grid_position: flower for flower in Flower.query.all() if flower.grid_position is not None}
+    user_assigned_position = user_flower.grid_position if user_flower.grid_position is not None else None
 
-    return render_template('garden.html', assigned_positions=assigned_positions)
+    return render_template('garden.html', assigned_positions=assigned_positions, user_assigned_position=user_assigned_position, user_flower=user_flower)
+
 
 
 # Plant flower in grid route

@@ -1,5 +1,5 @@
 ﻿body {
-    background-image: url('images/laka.png');
+    background-image: url('images/laka2.png');
     height: 100%;
     margin: 0;
     display: flex;
@@ -37,10 +37,11 @@
     left: 50%; /* Wyśrodkowanie formularza w poziomie */
     transform: translate(-50%, -50%); /* Dokładne wyśrodkowanie względem środka */
     background-color: #b6ed6d;
-    padding: 20px;
-    border: 1px solid #333;
+    padding: 30px;
+    border: 2px solid #333;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 500;
 }
 
 .form-container h2 {
@@ -62,20 +63,20 @@
     align-items: center;
 }
 
-    .form-container button {
-        width: calc(100% - 40px);
-        padding: 10px;
-        background-color: #328a3c;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-        max-width: 100%;
-    }
+.form-container button {
+    width: calc(100% - 40px);
+    padding: 10px;
+    background-color: #328a3c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    max-width: 100%;
+}
 
-    .form-container button:hover {
-        background-color: #555;
-    }
+.form-container button:hover {
+    background-color: #555;
+}
 
 .centered {
     display: flex;
@@ -84,28 +85,15 @@
     height: 100%;
 }
 
-#image-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px; /* Adjusted margin */
-    flex-wrap: wrap; /* To wrap elements if necessary */
+#ogrodnik-img {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    max-width: 20%; /* Obraz nie będzie szerszy niż 20% jego kontenera */
+    height: auto; /* Automatyczna wysokość w proporcji do szerokości */
+    z-index: 100;
 }
 
-    #image-buttons button {
-        border: none;
-        background: none;
-        margin: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #image-buttons img {
-        width: 60%; /* Adjusted image size */
-        height: auto;
-        cursor: pointer;
-    }
 
 .hidden {
     display: none;
@@ -120,9 +108,9 @@
     cursor: pointer;
 }
 
-    #toggle-button:hover {
-        background-color: #45a049;
-    }
+#toggle-button:hover {
+    background-color: #45a049;
+}
 
 #content {
     margin-top: 60px; /* Ensure content is below the top panel */

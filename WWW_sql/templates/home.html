@@ -4,12 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='images/logo.png') }}">
+    <link rel="shortcut icon" type="image/png" href="static/images/logo.png">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <style>
-
         .chosen {
             border: 2px solid green;
+        }
+
+        .button:hover {
+            background-color: #3e8e41;
+        }
+
+        .button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        #image-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+            #image-buttons a {
+                display: block;
+                width: 300px; 
+                height: 300px;
+                position: relative;
+            }
+
+            #image-buttons img {
+                object-fit: cover;
+                cursor: pointer;
+                transition: background-color 0.3s ease; /* Smooth transition */
+            }
+
+            #image-buttons a:hover img {
+                background-color: rgba(255, 255, 255, 0.5); /* Half translucent white */
+            }
+
+        .flower-info {
+            display: none;
+            margin: 20px 0;
+        }
+
+            .flower-info h2 {
+                margin: 10px 0;
+            }
+
+        .button {
+            display: inline-block;
+            padding: 20px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            color: #fff;
+            background-color: #4CAF50;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+            margin: 10px;
         }
 
             .button:hover {
@@ -21,6 +75,15 @@
                 box-shadow: 0 5px #666;
                 transform: translateY(4px);
             }
+
+        #garden ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #garden li {
+            margin: 5px 0;
+        }
     </style>
 </head>
 <body>
@@ -30,6 +93,9 @@
         </div>
         <div class="button-container">
             <a href="{{ url_for('logout') }}">Log Out</a>
+        </div>
+        <div class="button-container">
+            <a href="https://www.morizon.pl/blog/rosliny-ogrodowe-17-gatunkow/" onclick="kwiatek(event)">Top Secret</a>
         </div>
     </div>
 
@@ -46,56 +112,46 @@
 
         <div id="image-buttons" class="centered">
             <a href="javascript:void(0);" onclick="showFlowerInfo(1)">
-                <img src="{{ url_for('static', filename='images/flower1.jpeg') }}" alt="Flower 1">
+                <img src="{{ url_for('static', filename='images/flower1.png') }}" alt="Flower 1">
             </a>
             <a href="javascript:void(0);" onclick="showFlowerInfo(2)">
-                <img src="{{ url_for('static', filename='images/flower2.jpeg') }}" alt="Flower 2">
+                <img src="{{ url_for('static', filename='images/flower2.png') }}" alt="Flower 2">
             </a>
             <a href="javascript:void(0);" onclick="showFlowerInfo(3)">
-                <img src="{{ url_for('static', filename='images/flower3.jpeg') }}" alt="Flower 3">
+                <img src="{{ url_for('static', filename='images/flower3.png') }}" alt="Flower 3">
             </a>
             <a href="javascript:void(0);" onclick="showFlowerInfo(4)">
-                <img src="{{ url_for('static', filename='images/flower4.jpeg') }}" alt="Flower 4">
+                <img src="{{ url_for('static', filename='images/flower4.png') }}" alt="Flower 4">
             </a>
             <a href="javascript:void(0);" onclick="showFlowerInfo(5)">
-                <img src="{{ url_for('static', filename='images/flower5.jpg') }}" alt="Flower 5">
+                <img src="{{ url_for('static', filename='images/flower5.png') }}" alt="Flower 5">
             </a>
         </div>
 
         <div id="flower-info-1" class="flower-info">
-            <h2>INFORMATION ABOUT Flower 1</h2>
+            <h2>Flower 1</h2>
             <a href="{{ url_for('plant_flower', flower_id=1) }}" class="button">Choose This Flower</a>
         </div>
         <div id="flower-info-2" class="flower-info">
-            <h2>INFORMATION ABOUT Flower 2</h2>
+            <h2>Flower 2</h2>
             <a href="{{ url_for('plant_flower', flower_id=2) }}" class="button">Choose This Flower</a>
         </div>
         <div id="flower-info-3" class="flower-info">
-            <h2>INFORMATION ABOUT Flower 3</h2>
+            <h2>Flower 3</h2>
             <a href="{{ url_for('plant_flower', flower_id=3) }}" class="button">Choose This Flower</a>
         </div>
         <div id="flower-info-4" class="flower-info">
-            <h2>INFORMATION ABOUT Flower 4</h2>
+            <h2>Flower 4</h2>
             <a href="{{ url_for('plant_flower', flower_id=4) }}" class="button">Choose This Flower</a>
         </div>
         <div id="flower-info-5" class="flower-info">
-            <h2>INFORMATION ABOUT Flower 5</h2>
+            <h2>Flower 5</h2>
             <a href="{{ url_for('plant_flower', flower_id=5) }}" class="button">Choose This Flower</a>
-        </div>
-
-        <div id="garden">
-            <h2>Your Garden</h2>
-            <ul>
-                {% for flower in user_flowers %}
-                <li>{{ flower.name }}</li>
-                {% endfor %}
-            </ul>
         </div>
 
         {% if user_flowers|length > 0 %}
         <a href="{{ url_for('garden') }}" class="button">Visit the Garden</a>
         {% endif %}
-
     </div>
 
     <script>
@@ -117,6 +173,12 @@
 
         // Ensure the script is loaded
         console.log('Script loaded successfully.');
+
+        function kwiatek(event) {
+            event.preventDefault();
+            alert(":)");
+            window.location.href = event.target.href;
+        }
     </script>
 </body>
 </html>

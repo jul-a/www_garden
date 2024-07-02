@@ -13,6 +13,7 @@
     </script>
 </head>
 <body>
+    <img id="ogrodnik-img" src="{{ url_for('static', filename='images/ogrodnik2.png') }}" alt="Ogrodnik">
     <div id="top-panel">
         <div class="button-container">
             <a href="#" onclick="toggleRegisterForm()">Register</a>
@@ -20,9 +21,7 @@
         <div class="button-container">
             <a href="#" onclick="toggleLoginForm()">Log in</a>
         </div>
-        <div class="button-container">
-            <a href="https://rickroll.it/rickroll.mp4" onclick="rickroll(event)">Top Secret</a>
-        </div>
+
     </div>
 
     <div class="form-container" id="loginForm">
@@ -67,11 +66,6 @@
             }
         }
 
-        function rickroll(event) {
-            event.preventDefault();
-            alert("You have been rickrolled!");
-            window.location.href = event.target.href;
-        }
     </script>
 </body>
 </html>
